@@ -1,0 +1,22 @@
+.carousel-control-next,
+.carousel-control-prev
+
+/*, .carousel-indicators */
+    {
+    filter: invert(100%);
+
+}
+
+.carousel-inner {
+    padding: 2rem;
+    margin: auto;
+}
+
+.carousel-indicators {
+    margin-bottom: 0;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    width: 2rem;
+}
