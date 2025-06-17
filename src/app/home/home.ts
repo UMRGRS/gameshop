@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { CarritoComponent } from '../carrito/carrito';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [CarritoComponent],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })

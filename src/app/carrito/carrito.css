@@ -1,0 +1,91 @@
+/* carrito.component.css */
+
+/* Colores basados en HeroBiz theme */
+:root {
+  --primary-color: #0ea5e9;
+  --secondary-color: #64748b;
+  --dark-color: #1e293b;
+  --light-color: #f8fafc;
+}
+
+/* Override Bootstrap primary color */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #0284c7;
+  border-color: #0284c7;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
+
+.bg-dark {
+  background-color: var(--dark-color) !important;
+}
+
+/* Custom styles */
+.cart-item {
+  transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+  background-color: rgba(100, 116, 139, 0.1);
+}
+
+.image-placeholder {
+  border-radius: 8px;
+  border: 2px dashed #64748b;
+}
+
+.quantity-control button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.summary-item {
+  font-size: 1.1rem;
+}
+
+.card {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+  border-bottom: 1px solid #475569;
+}
+
+.btn-danger {
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cart-item .row > div {
+    margin-bottom: 1rem;
+  }
+  
+  .cart-item .col-md-2:last-child {
+    text-align: center !important;
+  }
+  
+  .quantity-control {
+    justify-content: center;
+  }
+}
