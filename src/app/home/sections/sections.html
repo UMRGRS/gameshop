@@ -1,10 +1,20 @@
 <div class="container-fluid mt-4">
     <div class="row">
-        <div class="col border-bottom">
-            <h4>Mejor vendidos</h4>
+        <div class="col">
+            <h4 class="pb-2 border-bottom">Mejor vendidos</h4>
+            @for (item of best_selling_games; track item.id) {
+            <app-sections-card [game_data]="item"></app-sections-card>
+            } @empty {
+            <p>Sin juegos para mostrar :c.</p>
+            }
         </div>
-        <div class="col border-bottom">
-            <h4>Novedades</h4>
+        <div class="col">
+            <h4 class="pb-2 border-bottom">Novedades</h4>
+            @for (item of new_games; track item.id) {
+            <app-sections-card [game_data]="item"></app-sections-card>
+            } @empty {
+            <p>Sin juegos para mostrar :c.</p>
+            }
         </div>
     </div>
 </div>
