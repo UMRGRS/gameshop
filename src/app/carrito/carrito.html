@@ -1,0 +1,101 @@
+<!-- carrito.component.html -->
+<div class="container-fluid bg-dark min-vh-100">
+  <!-- NAV BAR placeholder -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <span class="navbar-brand">NAV BAR</span>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="row">
+      <!-- Carrito Section -->
+      <div class="col-lg-8">
+        <div class="card bg-dark border-secondary">
+          <div class="card-header bg-primary">
+            <h3 class="text-black mb-0">Carrito</h3>
+          </div>
+          <div class="card-body">
+            <!-- Cart Items -->
+            <div *ngFor="let item of cartItems" class="cart-item mb-4 p-3 border border-secondary rounded">
+              <div class="row align-items-center">
+                <div class="col-md-2">
+                  <div class="image-placeholder bg-secondary d-flex align-items-center justify-content-center"
+                    style="height: 80px; width: 80px;">
+                    <i class="fas fa-image text-muted fa-2x"></i>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h5 class="text-black mb-1">{{ item.name }}</h5>
+                  <p class="text-black-50 mb-0">Precio: ${{ item.price.toFixed(2) }}</p>
+                </div>
+                <div class="col-md-2">
+                  <div class="quantity-control d-flex align-items-center">
+                    <button class="btn btn-sm btn-outline-dark me-2"
+                      (click)="updateQuantity(item.id, item.quantity - 1)">-</button>
+                    <span class="text-black">{{ item.quantity }}</span>
+                    <button class="btn btn-sm btn-outline-dark ms-2"
+                      (click)="updateQuantity(item.id, item.quantity + 1)">+</button>
+                  </div>
+                </div>
+                <div class="col-md-2 text-end">
+                  <button class="btn btn-danger btn-sm" (click)="removeItem(item.id)">
+                    <i class="fas fa-times"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-x-lg" viewBox="0 0 16 16">
+                      <path
+                        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Empty cart message -->
+            <div *ngIf="cartItems.length === 0" class="text-center py-5">
+              <i class="fas fa-shopping-cart fa-3x text-muted mb-3"></i>
+              <h4 class="text-black-50">Tu carrito está vacío</h4>
+            </div>
+
+            <!-- Continue Shopping Button -->
+            <div class="mt-4">
+              <button class="btn btn-info" (click)="continueShopping()">
+                <i class="fas fa-arrow-left me-2"></i>
+                Continuar comprando
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resumen de la compra Section -->
+      <div class="col-lg-4">
+        <div class="card bg-dark border-secondary">
+          <div class="card-header bg-secondary">
+            <h4 class="text-black mb-0 text-center">Resumen de la compra</h4>
+          </div>
+          <div class="card-body">
+            <div class="summary-item d-flex justify-content-between mb-3">
+              <span class="text-black">Subtotal:</span>
+              <span class="text-black">${{ getSubtotal().toFixed(2) }}</span>
+            </div>
+            <div class="summary-item d-flex justify-content-between mb-4">
+              <span class="text-black">Impuestos:</span>
+              <span class="text-black">${{ getTaxes().toFixed(2) }}</span>
+            </div>
+            <hr class="border-secondary">
+            <div class="summary-item d-flex justify-content-between mb-4">
+              <strong class="text-black fs-5">Total:</strong>
+              <strong class="text-black fs-5">${{ getTotal().toFixed(2) }}</strong>
+            </div>
+
+            <button class="btn btn-info w-100 py-2" (click)="proceedToPayment()" [disabled]="cartItems.length === 0">
+              <i class="fas fa-credit-card me-2"></i>
+              Pagar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
