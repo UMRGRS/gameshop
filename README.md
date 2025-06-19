@@ -34,6 +34,12 @@ Verify that Angular CLI is installed:
    ng version
    ```
 
+## Clone project repo
+Open your terminal and run
+   ```bash
+   git clone https://github.com/UMRGRS/gameshop.git
+   ```
+
 ## 🛠️ Install Project Dependencies
 Navigate to the project folder and install the required packages:
    ```bash
