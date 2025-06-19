@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SessionManagement } from '../../services/session-management';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inside-header',
@@ -7,5 +9,18 @@ import { Component } from '@angular/core';
   styleUrl: './inside-header.css'
 })
 export class InsideHeader {
+  constructor(private session_management:SessionManagement, private router: Router){}
+  
+    logout(){
+      this.session_management.setAuthStatus(false);
+      this.router.navigate([''])
+    }
+    
+    toLibrary(){
+      this.router.navigate(['library'])
+    }
 
+    toCart(){
+    this.router.navigate(['cart'])
+    }
 }
