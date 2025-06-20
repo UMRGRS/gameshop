@@ -3,6 +3,7 @@ import { Home } from './home/home/home';
 import { ProfileLibrary } from './profile-library/profile-library/profile-library';
 import { CarritoComponent } from './cart/cart/carrito';
 import { RouteGuard } from './services/route-guard';
+import { DetallesJuegoComponent } from './detalles-juego/detalles-juego';
 export const routes: Routes = [
     {
         path: '',
@@ -20,9 +21,9 @@ export const routes: Routes = [
         component: CarritoComponent,
         title: 'cart'
     },
-    //{
-    //    path: 'detail',
-    //    component: detalle,
-    //    title: 'detail'
-    //},
+    {
+        path: 'detail',
+        component: DetallesJuegoComponent,
+        title: 'detail'
+    },
 ];

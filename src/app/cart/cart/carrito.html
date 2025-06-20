@@ -59,7 +59,7 @@
 
             <!-- Continue Shopping Button -->
             <div class="mt-4">
-              <button class="btn btn-info" (click)="continueShopping()">
+              <button class="btn btn-info" routerLink="/">
                 <i class="fas fa-arrow-left me-2"></i>
                 Continuar comprando
               </button>
@@ -89,7 +89,7 @@
               <strong class="text-black fs-5">${{ getTotal().toFixed(2) }}</strong>
             </div>
 
-            <button class="btn btn-info w-100 py-2" (click)="proceedToPayment()" [disabled]="cartItems.length === 0">
+            <button class="btn btn-info w-100 py-2" routerLink="/library" [disabled]="cartItems.length === 0">
               <i class="fas fa-credit-card me-2"></i>
               Pagar
             </button>
