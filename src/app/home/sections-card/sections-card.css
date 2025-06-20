@@ -1,0 +1,12 @@
+.cart-item {
+    transition: all 0.3s ease;
+}
+
+.cart-item:hover {
+    background-color: rgba(100, 116, 139, 0.1);
+}
+
+.image-placeholder {
+    border-radius: 8px;
+    border: 2px dashed #64748b;
+}
