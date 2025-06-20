@@ -1,0 +1,21 @@
+.card {
+  background-color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.card-header {
+  background-color: #2172a0 !important;
+}
+
+.btn-custom-blue {
+  background-color: #2172a0;
+  color: white;
+  border: none;
+}
+
+.btn-custom-blue-dark {
+  background-color: #103b64;
+  color: white;
+  border: none;
+}
+
