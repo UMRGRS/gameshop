@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { RouterOutlet } from '@angular/router';
 import { Header } from "./global/header/header";
 import { Footer } from "./global/footer/footer";
