@@ -12,8 +12,8 @@ export class InsideHeader {
   constructor(private session_management:SessionManagement, private router: Router){}
   
     logout(){
-      this.session_management.setAuthStatus(false);
-      this.router.navigate([''])
+    //  this.session_management.setAuthStatus(false);
+    //  this.router.navigate([''])
     }
     
     toLibrary(){

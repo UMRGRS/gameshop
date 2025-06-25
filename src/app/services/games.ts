@@ -5,7 +5,7 @@ import { Games } from '../interfaces/games';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class GameService {
   private games_collection: CollectionReference<Games>;
 
   constructor(private firestore: Firestore) {

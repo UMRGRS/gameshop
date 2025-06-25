@@ -13,10 +13,22 @@ export class UserService {
     this.users_collection = collection(this.firestore, 'users') as CollectionReference<Users>;
   }
 
-  async createUser(data: Users): Promise<void> {
-    const game_doc_ref = doc(this.users_collection, data.uid); // custom-id
+  async createUser(uid:string, name:string, email:string): Promise<Users> {
+    const game_doc_ref = doc(this.users_collection, uid); // custom-id
+
+    const data = {
+        uid: uid,
+        name: name,
+        email: email,
+        owned_games: 0,
+        completed_games: 0,
+        about: "Add a bio here",
+        user_games: []
+    }
 
     await setDoc(game_doc_ref, data);
+
+    return data;
   }
 
   async getUser(user_id: string): Promise<Users | null> {

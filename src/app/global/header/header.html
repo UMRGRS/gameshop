@@ -9,9 +9,77 @@
         </div>
 
         <div class="col-md-3 text-end">
-            <img class="my-auto me-4" src="supermarket-cart.svg" height="30" width="30" (click)="toCart()" />
-            <button type="button" class="btn btn-outline-info me-2" (click)="login()">Login</button>
-            <button type="button" class="btn btn-info text-light" (click)="login()">Sign-up</button>
+            <button type="button" class="btn btn-outline-info me-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                Login
+            </button>
+            <button type="button" class="btn btn-info text-light" data-bs-toggle="modal" data-bs-target="#signupModal">
+                Sign Up
+            </button>
         </div>
     </header>
+</div>
+
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg rounded">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Email Login Form -->
+                <form id="emailLoginForm" [formGroup]="login_form" (submit)="onSubmitLogin()">
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="loginEmail" placeholder="you@example.com"
+                            formControlName="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Password"
+                            formControlName="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-info text-white w-100">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg rounded">
+            <div class="modal-header border-bottom-0">
+                <h5 class="modal-title" id="signupModalLabel">Create an Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Signup Form -->
+                <form id="signupForm" [formGroup]="signup_form" (submit)="onSubmitSignup()">
+                    <div class="mb-3">
+                        <label for="signupName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="signupName" placeholder="Your Name"
+                            formControlName="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="signupEmail" placeholder="you@example.com"
+                            formControlName="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signupPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="signupPassword" placeholder="Password"
+                            formControlName="password" required>
+                    </div>
+                    @if(signup_error!=null){
+                    <p class="text-danger">{{signup_error}}</p>
+                    }@else {
+
+                    }
+                    <button type="submit" class="btn btn-info text-white w-100">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

@@ -3,7 +3,8 @@ import { Games } from './games';
 
 export interface Users {
     uid: string,
-    name:string
+    name:string,
+    email: string,
     owned_games:number,
     completed_games:number,
     about:string,
