@@ -1,6 +1,6 @@
 // auth.service.ts
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, user } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut } from '@angular/fire/auth';
 import { UserService } from './users';
 import { FirebaseError } from 'firebase/app';
 import { SessionManagement } from './session-management';
@@ -38,8 +38,25 @@ export class AuthService {
   }
  }
 
- async loginWithEmailPassword(){
+ async loginWithEmailPassword(email: string, password: string){
+  try{
+    const user_credential = await this._loginWithEmailPassword(email, password);
 
+    const user = user_credential.user;
+    
+    const user_data = await this.user_service.getUser(user.uid);
+
+    this.session_management.setAuthStatus(user_data!, true);
+
+    return {user:user, error:null};
+  }catch(error){
+    return {user:null, error:this.getLoginErrorMessage(error)} ;
+  }
+ }
+  
+ logout() {
+  signOut(this.auth);
+  this.session_management.resetAuthStatus();
  }
 
  private getSignupErrorMessage(error: unknown): string {
@@ -60,5 +77,24 @@ export class AuthService {
       return 'An unexpected error occurred.';
     } 
   }
+
+  private getLoginErrorMessage(error: unknown): string {
+  if (error instanceof FirebaseError) {
+    switch (error.code) {
+      case 'auth/invalid-email':
+        return 'The email address is not valid.';
+      case 'auth/user-disabled':
+        return 'This user account has been disabled.';
+      case 'auth/user-not-found':
+        return 'No account found with this email.';
+      case 'auth/wrong-password':
+        return 'The password is incorrect.';
+      default:
+        return 'An unknown error occurred. Please try again.';
+    }
+  } else {
+    return 'An unexpected error occurred.';
+  }
+}
 
 }

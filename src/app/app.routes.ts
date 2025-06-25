@@ -26,4 +26,5 @@ export const routes: Routes = [
         component: DetallesJuegoComponent,
         title: 'detail'
     },
+    { path: '**', redirectTo: '' } 
 ];

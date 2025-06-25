@@ -1,10 +1,8 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
 import {FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 
-
-import { SessionManagement } from '../../services/session-management';
 import { AuthService } from '../../services/auth-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -28,11 +26,17 @@ export class Header {
     password: new FormControl('', [Validators.required])
   });
   
-  constructor(private router:Router, private auth_service:AuthService, private cd: ChangeDetectorRef){}
+  constructor(private auth_service:AuthService, private cd: ChangeDetectorRef){}
 
-  onSubmitLogin(){
+  async onSubmitLogin(){
     if(this.login_form.valid){
-      console.warn(this.login_form.value);
+      const response = await this.auth_service.loginWithEmailPassword(this.login_form.value.email!, this.login_form.value.password!);
+      if(response.error!=null){
+        this.login_error = response.error;
+        this.cd.detectChanges();
+      }else{
+        window.location.reload();
+      }
     } 
   }
 
@@ -43,16 +47,9 @@ export class Header {
         this.signup_error = response.error;
         this.cd.detectChanges();
       }else{
-        this.router.navigate(['']);
+        window.location.reload();
       }
     }
   }
-
-  //login(){
-  //  this.session_management.setAuthStatus(true);
-  //  this.router.navigate([''])
-  //}
-
-  
 }
 

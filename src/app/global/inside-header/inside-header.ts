@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SessionManagement } from '../../services/session-management';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth-service';
 
 @Component({
   selector: 'app-inside-header',
@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
   styleUrl: './inside-header.css'
 })
 export class InsideHeader {
-  constructor(private session_management:SessionManagement, private router: Router){}
+  constructor(private auth_service:AuthService , private router: Router){}
   
     logout(){
-    //  this.session_management.setAuthStatus(false);
-    //  this.router.navigate([''])
+      this.auth_service.logout();
+      this.router.navigate([''])
     }
     
     toLibrary(){

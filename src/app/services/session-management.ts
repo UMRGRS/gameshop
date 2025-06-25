@@ -17,8 +17,12 @@ export class SessionManagement {
 
   setAuthStatus(user: Users, status: boolean): void {
     this.authStatus.next(status);
-    console.log(this.authStatus.value);
     localStorage.setItem('session_active', JSON.stringify(user)); // persist
+  }
+
+  resetAuthStatus(): void {
+    this.authStatus.next(false);
+    localStorage.removeItem('session_active'); // persist
   }
 
   // Optional helper

@@ -40,6 +40,11 @@
                         <input type="password" class="form-control" id="loginPassword" placeholder="Password"
                             formControlName="password" required>
                     </div>
+                    @if(login_error!=null){
+                    <p class="text-danger">{{login_error}}</p>
+                    }@else {
+
+                    }
                     <button type="submit" class="btn btn-info text-white w-100">Login</button>
                 </form>
             </div>
