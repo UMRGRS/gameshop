@@ -6,11 +6,11 @@
                 <div class="carousel-item" *ngFor="let game of top_games; let i = index" [class.active]="i === 0">
                     <div class="row">
                         <div class="col text-center">
-                            <img [src]="game.image" height="300px">
+                            <img [src]="game.images[0]" height="300px">
                         </div>
                         <div class="col me-4">
                             <h4 class="mb-4">{{ game.name }}</h4>
-                            <p class="fs-5 mb-4">{{ game.description }}</p>
+                            <p class="fs-5 mb-4">{{ game.desc }}</p>
                             <p class="fs-5">{{ game.price }}</p>
                         </div>
                     </div>
