@@ -1,11 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { Games } from '../../interfaces/games';
 import { GameService } from '../../services/games';
 
 @Component({
   selector: 'app-home-carrousel',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './home-carrousel.html',
   styleUrl: './home-carrousel.css'
 })

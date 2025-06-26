@@ -1,7 +1,5 @@
-import { DocumentReference } from '@angular/fire/firestore';
-
 export interface Games {
-    reference: DocumentReference<Games>
+    reference: ""
     name:string,
     images: Array<String>
     desc: string,

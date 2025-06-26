@@ -1,4 +1,5 @@
-<a href="detail" class="link-body-emphasis text-decoration-none">
+<a [routerLink]="['/detail']" [queryParams]="{ id: game_data.reference}"
+    class="link-body-emphasis text-decoration-none">
     <div class="cart-item mb-4 p-3 border border-secondary rounded">
         <div class="row align-items-center">
             <div class="col-md-2">

@@ -1,4 +1,3 @@
-import { DocumentReference } from '@angular/fire/firestore';
 import { Games } from './games';
 
 export interface Users {
@@ -8,5 +7,5 @@ export interface Users {
     owned_games:number,
     completed_games:number,
     about:string,
-    user_games: Array<DocumentReference<Games>>
+    user_games: Array<Games>
 }

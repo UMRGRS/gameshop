@@ -18,13 +18,15 @@ export class GameService {
     await setDoc(game_doc_ref, data);
   }
 
-  async getGame(game_id: DocumentReference<Games>): Promise<Games | null> {
-    const game_snap = await getDoc(game_id);
+  async getGame(game_id: string): Promise<Games | null> {
+    const game_ref = doc(this.firestore, 'games', game_id);
+    
+    const game_snap = await getDoc(game_ref);
     if (game_snap.exists()) {
       return {
         ...game_snap.data(),
-        reference: game_id
-      }
+        reference: game_ref.id
+      } as Games
     } else {
       return null; // Game not found
     }
@@ -40,8 +42,8 @@ export class GameService {
       const data = doc_snap.data() as Omit<Games, 'reference'>;
       return {
         ...data,
-        reference: doc_snap.ref as DocumentReference<Games>,
-      };
+        reference: doc_snap.ref.id,
+      } as Games
     });
 
     return games;
@@ -60,8 +62,8 @@ export class GameService {
       const data = doc_snap.data() as Omit<Games, 'reference'>;
       return {
         ...data,
-        reference: doc_snap.ref as DocumentReference<Games>,
-      };
+        reference: doc_snap.ref.id,
+      } as Games
     });
 
     return games;
@@ -80,8 +82,8 @@ export class GameService {
       const data = doc_snap.data() as Omit<Games, 'reference'>;
       return {
         ...data,
-        reference: doc_snap.ref as DocumentReference<Games>,
-      };
+        reference: doc_snap.ref.id,
+      } as Games
     });
 
     return games;

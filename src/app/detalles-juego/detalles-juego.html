@@ -1,39 +1,29 @@
 <div class="container py-4" style="background-color: white; color: #103b64;">
-  <h2 class="mb-3">Metaphor: ReFantazio</h2>
+  <h2 class="mb-3"> {{game_data?.name}} </h2>
 
   <div class="row">
     <div class="col-md-8 mb-3">
       <div class="card mb-3">
-        <div class="card-body text-center bg-light" style="height: 300px;">
-          <i class="bi bi-image display-4 text-muted"></i>
-          <p class="mt-2 mb-0 text-muted">Imagen principal del juego</p>
-        </div>
+        <img [src]="game_data!.images[0]" class="card-body text-center bg-light" style="height: 300px;">
       </div>
 
 
       <div class="row g-2 mb-3">
         <div class="col-4">
           <div class="card h-100">
-            <div class="card-body text-center bg-light" style="height: 100px;">
-              <i class="bi bi-image text-muted"></i>
-              <p class="small mb-0 text-muted">Miniatura 1</p>
-            </div>
+            <img [src]="game_data!.images[1]" class="card-body text-center bg-light" style="height: 100px;">
+
           </div>
         </div>
         <div class="col-4">
           <div class="card h-100">
-            <div class="card-body text-center bg-light" style="height: 100px;">
-              <i class="bi bi-image text-muted"></i>
-              <p class="small mb-0 text-muted">Miniatura 2</p>
-            </div>
+            <img [src]="game_data!.images[2]" class="card-body text-center bg-light" style="height: 100px;">
+
           </div>
         </div>
         <div class="col-4">
           <div class="card h-100">
-            <div class="card-body text-center bg-light" style="height: 100px;">
-              <i class="bi bi-image text-muted"></i>
-              <p class="small mb-0 text-muted">Miniatura 3</p>
-            </div>
+            <img [src]="game_data!.images[3]" class="card-body text-center bg-light" style="height: 100px;">
           </div>
         </div>
       </div>
@@ -42,7 +32,7 @@
       <div class="d-flex align-items-center gap-3 mt-3">
         <div class="card bg-light" style="width: 130px;  ">
           <div class="card-body text-center py-2">
-            <h5 class="mb-0 text-dark">1,099.00</h5>
+            <h5 class="mb-0 text-dark"> $ {{game_data?.price}} </h5>
           </div>
         </div>
 
@@ -57,18 +47,9 @@
       <div class="card border-dark h-80">
         <div class="card-body text-dark">
           <h5 class="card-title">Descripción</h5>
-          <p class="card-text">Tras su asesinato, el difunto rey decreta
-            que el próximo monarca debe ser
-            elegido por el pueblo. Forja vínculos y conquista
-            un reino dividido en este RPG de fantasía que
-            ofrece combates por turnos y en tiempo real,
-            la posibilidad de personalizar el grupo
-            con arquetipos y horas de exploración.</p>
+          <p class="card-text"> {{game_data?.desc}} </p>
           <h6>Reseñas</h6>
-          <p>Muy positivas (10,985)</p>
-          <div>
-            ⭐⭐⭐⭐⭐
-          </div>
+          <p> {{game_data?.reviews_type}} ({{game_data?.reviews}})</p>
         </div>
       </div>
     </div>
@@ -77,16 +58,7 @@
 
   <div class="mt-4">
     <h4>Sobre el juego</h4>
-    <p class="text-dark">De los creadores de Persona 3, 4 y 5 llega Metaphor: ReFantazio.
-
-      Prepárate para la evolución de los JRPG de fantasía con Metaphor: ReFantazio,
-      ganador de más de 50 galardones, ya disponible. El progreso de la demo gratuita
-      se puede transferir a la versión completa del juego. Participa en el Torneo por
-      el Trono para luchar por la corona y el futuro. Controla tu destino,
-      afronta tus miedos y despierta los poderes mágicos del arquetipo
-      que yace en tu interior. Forma equipo con un increíble reparto de personajes y
-      embárcate en una aventura inmersiva que garantiza horas de exploración cautivadora,
-      dinámicos combates por turnos y en tiempo real, y descubrimientos alucinantes.</p>
+    <p class="text-dark"> {{game_data?.about}} </p>
   </div>
 
 
@@ -97,14 +69,7 @@
           Mínimos
         </div>
         <div class="card-body">
-          <p>Requiere un procesador y un sistema operativo de 64 bits
-            SO: Windows 10
-            Procesador: Intel Core i5-3470 or AMD FX-6300
-            Memoria: 6 GB de RAM
-            Gráficos: NVIDIA GeForce GTX 750 Ti, 4GB or AMD Radeon R7 360, 4GB or Intel Arc A310, 4GB
-            DirectX: Versión 11
-            Almacenamiento: 93 GB de espacio disponible
-            Notas adicionales: 720p 30 FPS. A CPU with AVX support is required.</p>
+          <p> {{game_data?.req_min}} </p>
         </div>
       </div>
     </div>
@@ -115,14 +80,7 @@
           Recomendados
         </div>
         <div class="card-body">
-          <p>Requiere un procesador y un sistema operativo de 64 bits
-            SO: Windows 10
-            Procesador: Intel Core i5-7600 or Ryzen 5 2600
-            Memoria: 8 GB de RAM
-            Gráficos: NVIDIA GeForce GTX 970, 4GB or AMD Radeon RX 480, 4GB or Intel Arc A380, 6GB
-            DirectX: Versión 11
-            Almacenamiento: 93 GB de espacio disponible
-            Notas adicionales: 1080p 60 FPS. A CPU with AVX support is required.</p>
+          <p>{{game_data?.req_rec}}.</p>
         </div>
       </div>
     </div>
