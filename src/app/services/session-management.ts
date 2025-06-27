@@ -25,10 +25,13 @@ export class SessionManagement {
     localStorage.removeItem('session_active'); // persist
   }
 
-  // Optional helper
   isAuthenticated(): boolean {
-    console.log(this.authStatus.value);
     return this.authStatus.value;
   }
+
+  getUserData():Users{
+    return JSON.parse(localStorage.getItem('session_active')!) as Users;
+  }
+
 }
 

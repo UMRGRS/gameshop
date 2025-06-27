@@ -4,26 +4,30 @@
   <div class="row">
     <div class="col-md-8 mb-3">
       <div class="card mb-3">
-        <img [src]="game_data!.images[0]" class="card-body text-center bg-light" style="height: 300px;">
+        <img [src]="game_data == null ? '' : game_data.images[0]" class="card-body text-center bg-light"
+          style="height: 300px;">
       </div>
 
 
       <div class="row g-2 mb-3">
         <div class="col-4">
           <div class="card h-100">
-            <img [src]="game_data!.images[1]" class="card-body text-center bg-light" style="height: 100px;">
+            <img [src]="game_data == null ? '' : game_data.images[1]" class="card-body text-center bg-light"
+              style="height: 100px;">
 
           </div>
         </div>
         <div class="col-4">
           <div class="card h-100">
-            <img [src]="game_data!.images[2]" class="card-body text-center bg-light" style="height: 100px;">
+            <img [src]="game_data == null ? '' : game_data.images[2]" class="card-body text-center bg-light"
+              style="height: 100px;">
 
           </div>
         </div>
         <div class="col-4">
           <div class="card h-100">
-            <img [src]="game_data!.images[3]" class="card-body text-center bg-light" style="height: 100px;">
+            <img [src]="game_data == null ? '' : game_data.images[3]" class="card-body text-center bg-light"
+              style="height: 100px;">
           </div>
         </div>
       </div>
@@ -32,7 +36,7 @@
       <div class="d-flex align-items-center gap-3 mt-3">
         <div class="card bg-light" style="width: 130px;  ">
           <div class="card-body text-center py-2">
-            <h5 class="mb-0 text-dark"> $ {{game_data?.price}} </h5>
+            <h5 class="mb-0 text-dark"> $ {{game_data == null ? '' : game_data.price}} </h5>
           </div>
         </div>
 
@@ -47,9 +51,9 @@
       <div class="card border-dark h-80">
         <div class="card-body text-dark">
           <h5 class="card-title">Descripción</h5>
-          <p class="card-text"> {{game_data?.desc}} </p>
+          <p class="card-text"> {{game_data == null ? '' : game_data.desc}} </p>
           <h6>Reseñas</h6>
-          <p> {{game_data?.reviews_type}} ({{game_data?.reviews}})</p>
+          <p> {{game_data == null ? '' : game_data.reviews_type}} ({{game_data == null ? '' : game_data.reviews}})</p>
         </div>
       </div>
     </div>
@@ -58,7 +62,7 @@
 
   <div class="mt-4">
     <h4>Sobre el juego</h4>
-    <p class="text-dark"> {{game_data?.about}} </p>
+    <p class="text-dark"> {{game_data == null ? '' : game_data.about}} </p>
   </div>
 
 
@@ -69,7 +73,7 @@
           Mínimos
         </div>
         <div class="card-body">
-          <p> {{game_data?.req_min}} </p>
+          <p> {{game_data == null ? '' : game_data.req_min}} </p>
         </div>
       </div>
     </div>
@@ -80,7 +84,7 @@
           Recomendados
         </div>
         <div class="card-body">
-          <p>{{game_data?.req_rec}}.</p>
+          <p>{{game_data == null ? '' : game_data.req_rec}}.</p>
         </div>
       </div>
     </div>

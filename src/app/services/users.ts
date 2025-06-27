@@ -22,7 +22,7 @@ export class UserService {
         email: email,
         owned_games: 0,
         completed_games: 0,
-        about: "Add a bio here",
+        about: "A great bio is not something I can actually write so you're stuck with this one",
         user_games: []
     }
 

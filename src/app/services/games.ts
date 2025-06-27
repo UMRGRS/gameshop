@@ -32,6 +32,21 @@ export class GameService {
     }
   }
 
+  async getGamesList(games_ids:Array<string>): Promise<Array<Games>>{
+    var games_list:Array<Games> = [];
+
+    
+
+    for (let index = 0; index < games_ids.length; index++) {
+      var game = await this.getGame(games_ids[index]);
+      games_list.push(game!);
+
+      console.warn("Added");
+      console.warn(game)
+    }
+    return games_list;
+  }
+
   async getFeaturedGames(): Promise<Array<Games> | null> {
     const q = query(collection(this.firestore, 'games'), where("featured", "==", true));
 

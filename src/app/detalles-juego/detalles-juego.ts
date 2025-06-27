@@ -1,9 +1,8 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { Games } from '../interfaces/games';
 import { GameService } from '../services/games';
-import { DocumentReference } from 'firebase/firestore';
 
 @Component({
   selector: 'app-detalles-juego',
@@ -14,21 +13,7 @@ import { DocumentReference } from 'firebase/firestore';
 
   constructor(private router:Router, private route: ActivatedRoute, private games_service:GameService, private cd: ChangeDetectorRef){}
   
-  game_data: Games | null = {
-      reference: "",
-      name:"",
-      images: [],
-      desc: "string",
-      reviews: 0,
-      reviews_type: "",
-      price: 0,
-      about: "",
-      req_min: "",
-      req_rec: "",
-      featured: false,
-      best_selling: false,
-      new: false,
-  };
+  game_data: Games | null = null;
   id:string|null = null;
 
   async ngOnInit(){

@@ -1,5 +1,3 @@
-import { Games } from './games';
-
 export interface Users {
     uid: string,
     name:string,
@@ -7,5 +5,5 @@ export interface Users {
     owned_games:number,
     completed_games:number,
     about:string,
-    user_games: Array<Games>
+    user_games: Array<string>
 }
