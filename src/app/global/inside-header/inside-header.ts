@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { SessionManagement } from '../../services/session-management';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth-service';
+import { CartService } from '../../services/cart-service';
 
 @Component({
   selector: 'app-inside-header',
@@ -9,10 +10,11 @@ import { Router } from '@angular/router';
   styleUrl: './inside-header.css'
 })
 export class InsideHeader {
-  constructor(private session_management:SessionManagement, private router: Router){}
+  constructor(private auth_service:AuthService , private router: Router, private cart_service:CartService){}
   
     logout(){
-      this.session_management.setAuthStatus(false);
+      this.cart_service.removeCart();
+      this.auth_service.logout();
       this.router.navigate([''])
     }
     

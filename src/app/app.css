@@ -10,9 +10,3 @@ body {
     flex: 1;
     /* Takes up the remaining space */
 }
-
-.footer {
-    background-color: #ccc;
-    padding: 20px;
-    text-align: center;
-}

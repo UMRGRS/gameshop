@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Users } from '../interfaces/users';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +12,26 @@ export class SessionManagement {
 
   private loadSession(): boolean {
     // Check for token or session storage flag
-    return localStorage.getItem('session_active') === 'true';
+    return localStorage.getItem('session_active') != null;
   }
 
-  setAuthStatus(status: boolean): void {
+  setAuthStatus(user: Users, status: boolean): void {
     this.authStatus.next(status);
-    localStorage.setItem('session_active', String(status)); // persist
+    localStorage.setItem('session_active', JSON.stringify(user)); // persist
   }
 
-  // Optional helper
+  resetAuthStatus(): void {
+    this.authStatus.next(false);
+    localStorage.removeItem('session_active');
+  }
+
   isAuthenticated(): boolean {
     return this.authStatus.value;
   }
+
+  getUserData():Users{
+    return JSON.parse(localStorage.getItem('session_active')!) as Users;
+  }
+
 }
 
