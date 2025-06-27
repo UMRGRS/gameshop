@@ -41,8 +41,11 @@
         </div>
 
 
-        <button class="btn btn-custom-blue flex-grow-1">Añadir al carrito</button>
-        <button class="btn btn-custom-blue-dark flex-grow-1" routerLink="/cart">Comprar</button>
+        <button class="btn btn-custom-blue flex-grow-1" (click)="addToCart(game_data?.reference)"
+          [disabled]="disable_buttons">Añadir al
+          carrito</button>
+        <button class="btn btn-custom-blue-dark flex-grow-1" (click)="buyGame(game_data?.reference)"
+          [disabled]="disable_buttons">Comprar</button>
       </div>
     </div>
 

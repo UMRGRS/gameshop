@@ -50,6 +50,7 @@ export class AuthService {
 
     return {user:user, error:null};
   }catch(error){
+    console.log(error);
     return {user:null, error:this.getLoginErrorMessage(error)} ;
   }
  }
@@ -89,6 +90,8 @@ export class AuthService {
         return 'No account found with this email.';
       case 'auth/wrong-password':
         return 'The password is incorrect.';
+      case 'auth/invalid-credential':
+        return 'The password or email are incorrect'
       default:
         return 'An unknown error occurred. Please try again.';
     }

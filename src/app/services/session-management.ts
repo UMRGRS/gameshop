@@ -22,7 +22,7 @@ export class SessionManagement {
 
   resetAuthStatus(): void {
     this.authStatus.next(false);
-    localStorage.removeItem('session_active'); // persist
+    localStorage.removeItem('session_active');
   }
 
   isAuthenticated(): boolean {
