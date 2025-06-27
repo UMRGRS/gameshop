@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Games } from '../interfaces/games';
 import { GameService } from '../services/games';
-import { Cart } from '../services/cart';
+import { CartService } from '../services/cart-service';
 import { SessionManagement } from '../services/session-management';
 
 @Component({
@@ -13,7 +13,7 @@ import { SessionManagement } from '../services/session-management';
     imports: [CommonModule]
 })export class DetallesJuegoComponent implements OnInit{
 
-  constructor(private router:Router, private route: ActivatedRoute, private games_service:GameService, private cd: ChangeDetectorRef, private cart_service:Cart, private session_management:SessionManagement){}
+  constructor(private router:Router, private route: ActivatedRoute, private games_service:GameService, private cd: ChangeDetectorRef, private cart_service:CartService, private session_management:SessionManagement){}
   
   game_data: Games | null = null;
   id:string|null = null;
@@ -34,16 +34,16 @@ import { SessionManagement } from '../services/session-management';
     }
   }
 
-  addToCart(game_id:string|undefined){
-    if(game_id!=undefined){
-      this.cart_service.addGameToCart(game_id);
-      alert("Game added to cart successfully");
+  addToCart(game_data:Games){
+    if(game_data!=undefined){
+      this.cart_service.addGameToCart({id:game_data.reference, name:game_data.name, image:game_data.images[0], price:game_data.price, quantity:1});
+      alert("Game: " + this.game_data?.name + " added to cart");
     }
   }
 
-  buyGame(game_id:string|undefined){
-    if(game_id!=undefined){
-      this.cart_service.addGameToCart(game_id);
+  buyGame(game_data:Games){
+    if(game_data!=undefined){
+      this.cart_service.addGameToCart({id:game_data.reference, name:game_data.name, image:game_data.images[0], price:game_data.price, quantity:1});
       this.router.navigate(['cart']);
     }
   }

@@ -1,7 +1,7 @@
 export interface Games {
     reference: ""
     name:string,
-    images: Array<String>
+    images: Array<string>
     desc: string,
     reviews: number,
     reviews_type: string,
