@@ -1,6 +1,6 @@
 // auth.service.ts
 import { Injectable } from '@angular/core';
-import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut, sendPasswordResetEmail } from '@angular/fire/auth';
 import { UserService } from './users';
 import { FirebaseError } from 'firebase/app';
 import { SessionManagement } from './session-management';
@@ -20,6 +20,10 @@ export class AuthService {
     return createUserWithEmailAndPassword(this.auth, email, password);
   }
 
+  private _sendPasswordResetEmail(email: string) {
+    return sendPasswordResetEmail(this.auth, email);
+  }
+
  async signupWithEmailPassword(name:string, email: string, password: string){
   try{
     const user_credential = await this._signupWithEmailPassword(email, password);
@@ -33,6 +37,16 @@ export class AuthService {
     this.session_management.setAuthStatus(user_data, true);
 
     return {user:user, error:null};
+  }catch(error){
+    return {user:null, error:this.getSignupErrorMessage(error)} ;
+  }
+ }
+
+ async resetPassword(email: string){
+  try{
+    await this._sendPasswordResetEmail(email);
+
+    return {success:"Password reset email sent", error:null};
   }catch(error){
     return {user:null, error:this.getSignupErrorMessage(error)} ;
   }

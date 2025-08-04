@@ -2,10 +2,11 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import {FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 
 import { AuthService } from '../../services/auth-service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })

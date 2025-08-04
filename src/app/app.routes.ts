@@ -8,11 +8,17 @@ import { AdminPage } from './admin/admin-page/admin-page';
 import { ModPage } from './moderator/mod-page/mod-page';
 import { RouteGuardAdmin } from './services/route-guard-admin';
 import { RouteGuardMod } from './services/route-guard-mod';
+import { RestorePassword } from './restore-password/restore-password/restore-password';
 export const routes: Routes = [
     {
         path: '',
         component: Home,
         title: 'Home',
+    },
+    {
+        path: 'restore-password',
+        component: RestorePassword,
+        title: 'Restore password',
     },
     {
         path: 'library',
