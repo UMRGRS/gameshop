@@ -57,4 +57,14 @@ export class UserService {
 
     return update_user!;
   }
+
+  async updateUser(user_id: string, new_name:string){
+    const user_doc_ref = doc(this.users_collection.firestore, `users/${user_id}`) as DocumentReference<Users>;
+
+    await updateDoc(user_doc_ref, {name :new_name});
+
+    const update_user = await this.getUser(user_id);
+
+    return update_user!;
+  }
 }
