@@ -6,10 +6,15 @@
                 <p class="fs-2 my-auto text-info">The game tavern</p>
             </a>
         </div>
-        <div class="col-md-3 text-end">
-            <img class="my-auto me-4" src="supermarket-cart.svg" height="30" width="30" (click)="toCart()" />
-            <button type="button" class="btn btn-outline-info me-2" (click)="toLibrary()">Profile</button>
-            <button type="button" class="btn btn-outline-info me-2" (click)="toLibrary()">Library</button>
+        <div class="col-md-5 text-end">
+            <img class="my-auto me-4" src="supermarket-cart.svg" height="30" width="30" [routerLink]="['/cart']" />
+            <button type="button" class="btn btn-outline-info me-2" [routerLink]="['/library']">Profile</button>
+            <button type="button" class="btn btn-outline-info me-2" [routerLink]="['/library']">Library</button>
+            @if (isAdmin) {<button type="button" class="btn btn-outline-info me-2" [routerLink]="['/admin']">Admin
+                panel</button>}
+            @if(isModerator){<button type="button" class="btn btn-outline-info me-2"
+                [routerLink]="['/moderator']">Moderation
+                panel</button>}
             <button type="button" class="btn btn-info text-light" (click)="logout()">Logout</button>
         </div>
     </header>
