@@ -5,5 +5,7 @@ export interface Users {
     owned_games:number,
     completed_games:number,
     about:string,
-    user_games: Array<string>
+    user_games: Array<string>,
+    isMod: boolean,
+    isAdmin: boolean,
 }

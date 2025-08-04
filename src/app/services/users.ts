@@ -23,7 +23,9 @@ export class UserService {
         owned_games: 0,
         completed_games: 0,
         about: "A great bio is not something I can actually write so you're stuck with this one",
-        user_games: []
+        user_games: [],
+        isMod: false,
+        isAdmin:false
     }
 
     await setDoc(game_doc_ref, data);

@@ -29,6 +29,16 @@ export class SessionManagement {
     return this.authStatus.value;
   }
 
+  isAuthenticatedAndIsAdmin(): boolean {
+    const user = this.getUserData();
+    return this.authStatus.value && user.isAdmin;
+  }
+
+  isAuthenticatedAndIsMod(): boolean {
+    const user = this.getUserData();
+    return this.authStatus.value && user.isMod;
+  }
+
   getUserData():Users{
     return JSON.parse(localStorage.getItem('session_active')!) as Users;
   }

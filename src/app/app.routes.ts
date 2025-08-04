@@ -4,6 +4,10 @@ import { ProfileLibrary } from './profile-library/profile-library/profile-librar
 import { CarritoComponent } from './cart/cart/carrito';
 import { RouteGuard } from './services/route-guard';
 import { DetallesJuegoComponent } from './detalles-juego/detalles-juego';
+import { AdminPage } from './admin/admin-page/admin-page';
+import { ModPage } from './moderator/mod-page/mod-page';
+import { RouteGuardAdmin } from './services/route-guard-admin';
+import { RouteGuardMod } from './services/route-guard-mod';
 export const routes: Routes = [
     {
         path: '',
@@ -25,6 +29,18 @@ export const routes: Routes = [
         path: 'detail',
         component: DetallesJuegoComponent,
         title: 'detail'
+    },
+    {
+        path: 'admin',
+        component: AdminPage,
+        title: 'Admin panel',
+        canActivate: [RouteGuardAdmin]
+    },
+    {
+        path: 'moderator',
+        component: ModPage,
+        title: 'Moderation panel',
+        canActivate: [RouteGuardAdmin, RouteGuardMod]
     },
     { path: '**', redirectTo: '' } 
 ];
