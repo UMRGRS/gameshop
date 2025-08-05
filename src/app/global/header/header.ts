@@ -2,7 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import {FormGroup, FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 
 import { AuthService } from '../../services/auth-service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +26,7 @@ export class Header {
     password: new FormControl('', [Validators.required])
   });
   
-  constructor(private auth_service:AuthService, private cd: ChangeDetectorRef){}
+  constructor(private auth_service:AuthService, private cd: ChangeDetectorRef, private router:Router){}
 
   async onSubmitLogin(){
     if(this.login_form.valid){
@@ -47,6 +47,7 @@ export class Header {
         this.signup_error = response.error;
         this.cd.detectChanges();
       }else{
+        this.router.navigate(['']);
         window.location.reload();
       }
     }
